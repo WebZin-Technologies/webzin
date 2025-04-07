@@ -3,12 +3,15 @@ import './NavbarSection.css'
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Logo from '../../Assets/Logo.png'
+import { Link, useNavigate } from 'react-router-dom'
+
+
 
 const navigation = [
-  { name: 'Home', href: '#home' },
-  { name: 'Services', href: '#services' },
-  { name: 'About', href: '#about' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', location: '/' },
+  { name: 'Services', location: '/services' },
+  { name: 'About', location: '/about' },
+  { name: 'Contact', location: '/contact' },
 ]
 
 function classNames(...classes) {
@@ -16,8 +19,7 @@ function classNames(...classes) {
 }
 
 function NavbarSection() {
-  const [activeItem, setActiveItem] = useState('#home');
-
+  const [activeItem, setActiveItem] = useState('/');
   return (
     <Disclosure as="nav" className="bg-webzin">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -35,21 +37,18 @@ function NavbarSection() {
           <div className="hidden sm:flex sm:items-center">
             <div className="flex space-x-8 nav-link">
               {navigation.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
-                  onClick={() => setActiveItem(item.href)}
+                  to={item.location}
+                  onClick={() =>{ setActiveItem(item.location)}}
                   className={classNames(
-                    activeItem === item.href ? 'bg-white/10 text-white' : 'text-white hover:bg-white/10',
+                    activeItem === item.location ? 'bg-white/10 text-white' : 'text-white hover:bg-white/10',
                     'px-4 py-2 text-xl font-bold relative group'
                   )}
                 >
-                  {item.name}
-                  {/* <span className={classNames(
-                    activeItem === item.href ? 'w-full' : 'w-0 ',
-                    'absolute left-0 bottom-0 h-0.5 bg-white transition-all duration-300'
-                  )} /> */}
-                </a>
+                   {item.name}
+                
+                </Link>
               ))}
             </div>
           </div>
@@ -73,23 +72,21 @@ function NavbarSection() {
       <DisclosurePanel className="sm:hidden">
         <div className="px-4 pt-2 pb-3  space-y-1 nav-link">
           {navigation.map((item) => (
-            <DisclosureButton
+            <Link
               key={item.name}
               as="a"
-              href={item.href}
-              onClick={() => setActiveItem(item.href)}
+              to={item.location}
+              onClick={() => { setActiveItem(item.location)}}
               className={classNames(
-                activeItem === item.href
+                activeItem === item.location
                   ? 'bg-white/10 text-white'  // Transparent light white background
                   : 'text-white hover:bg-white/10',
                 'block px-3 py-2 rounded-md text-lg font-bold relative'
               )}
             >
-              {item.name}
-              {/* {activeItem === item.href && (
-                <span className="absolute left-3 bottom-0 h-0.5 w-2/4 -translate-x-1/2 bg-white" />
-              )} */}
-            </DisclosureButton>
+             {item.name}
+              
+            </Link>
           ))}
         </div>
       </DisclosurePanel>
