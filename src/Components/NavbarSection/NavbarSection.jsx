@@ -21,8 +21,8 @@ function classNames(...classes) {
 function NavbarSection() {
   const [activeItem, setActiveItem] = useState('/');
   return (
-    <Disclosure as="nav" className="bg-webzin">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <Disclosure as="nav" className="bg-webzin z-20">
+      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 z-20">
         <div className="relative flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
