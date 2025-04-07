@@ -11,10 +11,10 @@
   --black: #111;
   --white: #ffffff;
   --card: #f2f2f2;
-  --bg-primary: #4328c7;
+  --bg-webzin: #4328c7;
 }
-.bg-primary {
-  background-color: var(--bg-primary);
+.bg-webzin{
+  background-color: var(--bg-webzin);
   color: var(--white);
 }
 

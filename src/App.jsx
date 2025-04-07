@@ -16,7 +16,6 @@ function App() {
         <Route path='/about' element={<About/>}/>
         <Route path='/contact' element={<Contact/>}/>
       </Routes>
-      <h1 className="text-3xl font-bold underline">Webzin</h1>
 
     </div>
   )
