@@ -1,0 +1,127 @@
+/* Main Container */
+.testimonial {
+    width: 100%;
+    height: auto;
+    background: var(--primary);
+    padding: 30px 0;
+  }
+  
+  /* Section Title Styling */
+  .section-title-w {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 8px;
+    margin-top: 20px;
+  }
+  
+  .section-title-w::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 4px;
+    background-color: white;
+    transition: width 0.3s ease;
+  }
+  
+  .section-title-w:hover::after {
+    width: 70%;
+  }
+  
+  /* Stars Styling */
+  .stars {
+    color: #fbc02d;
+    font-size: 20px;
+  }
+  
+  /* Icon Container */
+  .icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Testimonial Card */
+  .testimonial-card {
+    height: 17rem;
+    width: 16rem;
+    background: var(--white);
+    margin: auto;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    min-width: 260px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+  /* Double Quote Icon */
+  .testimonial-icon {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+  }
+  
+  /* Review Text */
+  .testimonial-text {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
+  /* Name and Role */
+  .testimonial-name {
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--black);
+  }
+  
+  /* Scroll Container for testimonials */
+  .testimonial-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .testimonial-scroll-container::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .testimonial-scroll-container::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+  }
+  
+  /* On lg and above: use grid layout with 4 columns */
+  @media (min-width: 1024px) {
+    .testimonial-scroll-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      overflow-x: visible;
+      scroll-snap-type: none;
+    }
+  
+    .testimonial-card {
+      min-width: auto;
+      scroll-snap-align: none;
+    }
+  }
+  
