@@ -46,9 +46,12 @@ html , body{
   box-shadow: 0 4px 12px rgba(67, 40, 199, 0.3);
 }
 .section-title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
   text-align: center;
   margin-bottom: 2rem;
   color: var(--primary);
+  display: inline-block;
+  position: relative;
+  padding-bottom: 8px;
 }
