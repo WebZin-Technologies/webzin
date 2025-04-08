@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaGlobe, FaCode, FaShoppingCart, FaPalette, FaTools, FaPencilRuler } from 'react-icons/fa';
+import { FaGlobe, FaCode, FaShoppingCart, FaPalette, FaTools, FaPencilRuler, FaAngleRight } from 'react-icons/fa';
 import './ServicesCards.css'
 function ServicesCards() {
   const services = [
@@ -31,6 +31,10 @@ function ServicesCards() {
           </div>
         ))}
       </div>
+      <div className="btn-purple-container">
+      <button className="btn-purple">Explore More <FaAngleRight/></button>
+      </div>
+    
     </div>
   );
 }

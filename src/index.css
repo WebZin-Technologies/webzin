@@ -24,26 +24,20 @@ html , body{
 }
 
 .btn-purple {
-  background-color: var(--primary);
-  color: var(--white);
-  /* padding: 0.6rem 1.4rem; */
-  border: none;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 1.3rem;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-  display: inline-block;
-  text-align: center;
-  text-decoration: none;
-  width: 180px;
-  padding: 10px;
-  margin: 10px 0;
+  display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 1rem;
 }
 .btn-purple:hover {
-  background-color: #341eb5; 
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(67, 40, 199, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 .section-title {
   font-size: 2.5rem;
