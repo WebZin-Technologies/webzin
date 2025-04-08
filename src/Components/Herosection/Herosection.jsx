@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaAngleRight } from "react-icons/fa";
 import { BackgroundLines } from '../Ui/background-lines';
-import './HeroSection.css';
+import './Herosection.css';
 
 const HeroSection = () => {
   return (
