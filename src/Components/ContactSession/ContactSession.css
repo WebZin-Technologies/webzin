@@ -1,0 +1,114 @@
+.contact-session {
+    padding: 40px;
+    text-align: center;
+  }
+  
+  .contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .message-form,
+  .social-section {
+    flex: 1;
+    min-width: 280px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .contact-head {
+    color: #4328c7;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 35px;
+  }
+  
+  .input-small {
+    border: 2px solid var(--primary);
+    width: 300px;
+    height: 50px;
+    margin-bottom: 30px;
+    padding: 10px;
+    font-size: 18px;
+    outline: #4328c7;
+  }
+  
+  .input-medium {
+    border: 2px solid var(--primary);
+    width: 300px;
+    height: 100px;
+    margin-bottom: 30px;
+    padding: 10px;
+    font-size: 18px;
+    outline: #4328c7;
+  }
+  
+  .contact-button {
+    width: 300px;
+    height: 50px;
+    margin-bottom: 30px;
+    padding: 10px;
+    font-size: 18px;
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* --- Updated Social Section --- */
+  
+  .social-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  
+  .social-container {
+    display: flex;
+    flex-direction: column;
+    gap: 43px;
+    margin: 0 auto;
+  }
+  .social-container a{
+    text-decoration: none;
+    color: black;
+  }
+  .social-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 2px solid var(--primary);
+    padding: 10px;
+  }
+  
+  .contact-social-icon {
+    font-size: 38px;
+    color: #000;
+  }
+  
+  .contact-social-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  
+  .details-title {
+    font-size: 30px;
+    font-weight: 600;
+  }
+
+  .details-subtitle {
+    font-size: 25px;
+    color: #333;
+  }
+  .contact-head{
+    text-align: center;
+    width: 100%;
+  }
