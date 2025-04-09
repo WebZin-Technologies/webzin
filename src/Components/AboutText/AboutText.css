@@ -1,0 +1,12 @@
+.about-paragraph{
+    font-size: 24px;
+    width: 65%;
+    text-align: center;
+}
+.about-paragraph-container{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}

@@ -1,0 +1,10 @@
+.dev-card-container{
+    padding: 40px ;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+}
+.dev-card{
+    width: 400px;
+}
