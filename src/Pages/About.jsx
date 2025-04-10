@@ -8,11 +8,11 @@ import FooterSection from '../Components/FooterSection/FooterSection'
 function About() {
   return (
     <div>
-      <NavbarSection/>
+
       <AboutText/>
       <AboutQuality/>
       <AboutDev/>
-      <FooterSection/>
+
     </div>
   )
 }

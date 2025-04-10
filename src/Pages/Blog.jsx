@@ -1,16 +1,16 @@
 import React from 'react'
 import NavbarSection from '../Components/NavbarSection/NavbarSection'
-import ServicesSection from '../Components/ServicesSection/ServicesSection'
 import FooterSection from '../Components/FooterSection/FooterSection'
+import BlogHome from '../Components/BlogHome/BlogHome'
 
-function Services() {
+function Blog() {
   return (
     <div>
-      <NavbarSection/>
-      <ServicesSection/>
-      <FooterSection/>
+
+      <BlogHome/>
+
     </div>
   )
 }
 
-export default Services
+export default Blog

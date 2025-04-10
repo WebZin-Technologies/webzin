@@ -6,9 +6,9 @@ import FooterSection from '../Components/FooterSection/FooterSection'
 function Contact() {
   return (
     <div>
-      <NavbarSection/>
+
       <ContactSession/>
-      <FooterSection/>
+
     </div>
   )
 }

@@ -9,12 +9,10 @@ import HeroSection from '../Components/Herosection/Herosection'
 function Home() {
   return (
     <div>
-      <NavbarSection/>
       <HeroSection/>
       <ServicesCards/>
       <Testimonial/>
       <Faq/>
-      <FooterSection/>
     </div>
   )
 }
