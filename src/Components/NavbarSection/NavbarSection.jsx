@@ -3,7 +3,7 @@ import './NavbarSection.css'
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Logo from '../../Assets/Logo.png'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const navigation = [
   { name: 'Home', location: '/' },
@@ -17,7 +17,13 @@ function classNames(...classes) {
 }
 
 function NavbarSection() {
-  const [activeItem, setActiveItem] = useState('/');
+  const [activeItem, setActiveItem] = useState('/')
+  const navigate = useNavigate()
+
+  const handleNavigation = (location) => {
+    setActiveItem(location)
+    navigate(location)
+  }
 
   return (
     <Disclosure as="nav" className="bg-webzin z-20">
@@ -38,26 +44,26 @@ function NavbarSection() {
               <div className="hidden sm:flex sm:items-center">
                 <div className="flex space-x-8 nav-link">
                   {navigation.map((item) => (
-                    <Link
+                    <button
                       key={item.name}
-                      to={item.location}
-                      onClick={() => setActiveItem(item.location)}
+                      onClick={() => handleNavigation(item.location)}
                       className={classNames(
                         activeItem === item.location
                           ? 'bg-white/10 text-white'
                           : 'text-white hover:bg-white/10',
-                        'px-4 py-2 text-xl font-bold relative group'
+                        'px-4 py-2 text-xl font-bold relative group',
+                        'focus:outline-none focus:ring-0 border-none'
                       )}
                     >
                       {item.name}
-                    </Link>
+                    </button>
                   ))}
                 </div>
               </div>
 
               {/* Mobile Menu Button */}
               <div className="flex items-center sm:hidden">
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-white focus:outline-none">
+                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-white focus:outline-none focus:ring-0 border-none">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-8 w-8" aria-hidden="true" />
@@ -71,23 +77,28 @@ function NavbarSection() {
 
           {/* Mobile Navigation */}
           <Disclosure.Panel className="sm:hidden">
-            <div className="px-4 pt-2 pb-3 space-y-1 nav-link">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.location}
-                  onClick={() => setActiveItem(item.location)}
-                  className={classNames(
-                    activeItem === item.location
-                      ? 'bg-white/10 text-white'
-                      : 'text-white hover:bg-white/10',
-                    'block px-3 py-2 rounded-md text-lg font-bold relative'
-                  )}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
+            {({ close }) => (
+              <div className="px-4 pt-2 pb-3 space-y-1 nav-link">
+                {navigation.map((item) => (
+                  <button
+                    key={item.name}
+                    onClick={() => {
+                      handleNavigation(item.location)
+                      close() // close the mobile menu
+                    }}
+                    className={classNames(
+                      activeItem === item.location
+                        ? 'bg-white/10 text-white'
+                        : 'text-white hover:bg-white/10',
+                      'block px-3 py-2 rounded-md text-lg font-bold relative',
+                      'focus:outline-none focus:ring-0 border-none'
+                    )}
+                  >
+                    {item.name}
+                  </button>
+                ))}
+              </div>
+            )}
           </Disclosure.Panel>
         </>
       )}

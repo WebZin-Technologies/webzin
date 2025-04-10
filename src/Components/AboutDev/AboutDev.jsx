@@ -6,13 +6,13 @@ function AboutDev() {
       name: "Risnan Rv",
       role: "Front-end & UI / UX",
       skills: ["React js", "Figma", "Bootstrap", "JavaScript"],
-      portfolioText: "View Portfolio",
+      portfolio: "https://risnanrv.vercel.app",
     },
     {
       name: "Ahindev B",
       role: "Back-end Developer",
       skills: ["React js", "Node.js", "MongoDB", "Express.js"],
-      portfolioText: "View Portfolio",
+      portfolio: "https://ahindev.pythonanywhere.com/",
     },
   ];
 
@@ -33,8 +33,8 @@ function AboutDev() {
         </span>
       ))}
     </div>
-    <a href="#" className=" inline-block font-semibold underline text-white transform hover:-translate-y-1 transition duration-300">
-      {dev.portfolioText}
+    <a href={dev.portfolio}className=" inline-block font-semibold underline text-white transform hover:-translate-y-1 transition duration-300">
+      View Portfolio
     </a>
     
   </div>

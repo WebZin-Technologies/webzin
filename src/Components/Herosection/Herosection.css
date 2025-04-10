@@ -1,7 +1,7 @@
 .hero {
     width: 100%;
     position: relative;
-    padding: 120px 0 80px;
+    padding: 110px 0 80px;
 
   }
   
@@ -92,7 +92,7 @@
   
   @media (max-width: 480px) {
     .hero {
-      padding-top: 120px;
+      padding-top: 80px;
       padding-bottom: 60px;
     }
     

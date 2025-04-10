@@ -2,8 +2,10 @@ import React from 'react';
 import { FaAngleRight } from "react-icons/fa";
 import { BackgroundLines } from '../Ui/background-lines';
 import './Herosection.css';
+import { useNavigate } from 'react-router-dom';
 
 const HeroSection = () => {
+  const navigate = useNavigate()
   return (
     <section className="hero">
       <BackgroundLines>
@@ -17,7 +19,7 @@ const HeroSection = () => {
             that captivate, convert, and elevate your online presence
           </p>
 
-          <button className="hero__cta">
+          <button className="hero__cta focus:outline-none focus:ring-0 border-none" onClick={() => navigate('/contact')}>
             Get a Quote <FaAngleRight className="hero__cta-icon" />
           </button>
 

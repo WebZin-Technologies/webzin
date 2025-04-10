@@ -1,7 +1,10 @@
 import React from 'react';
 import { FaGlobe, FaCode, FaShoppingCart, FaPalette, FaTools, FaPencilRuler, FaAngleRight } from 'react-icons/fa';
 import './ServicesCards.css'
+import { useNavigate } from 'react-router-dom';
 function ServicesCards() {
+
+  const navigate = useNavigate()
   const services = [
     { id: 1, name: "Static Website", icon: <FaGlobe /> },
     { id: 2, name: "Dynamic Website", icon: <FaCode /> },
@@ -31,7 +34,7 @@ function ServicesCards() {
         ))}
       </div>
       <div className="btn-purple-container">
-      <button className="btn-purple">Explore More <FaAngleRight/></button>
+      <button onClick={() => navigate('/blog')} className="btn-purple focus:outline-none focus:ring-0 border-none">Explore More <FaAngleRight/></button>
       </div>
     
     </div>
