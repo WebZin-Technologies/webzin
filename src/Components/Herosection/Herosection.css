@@ -1,102 +1,136 @@
+/* Hero Section Base Styles */
 .hero {
-    width: 100%;
-    position: relative;
-    padding: 110px 0 80px;
+  width: 100%;
+  position: relative;
+  padding: 140px 0 100px;
+  background: #ffffff;
+  overflow: hidden;
+}
 
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(71, 40, 199, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(71, 40, 199, 0.05) 0%, transparent 50%);
+  z-index: 1;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Title Styles */
+.hero__title {
+  font-weight: 800;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.hero__title span {
+  color: var(--black);
+}
+
+/* Subtitle Styles */
+.hero__subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+/* Buttons Container */
+.hero__buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Main Button */
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
+}
+
+.hero__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Portfolio Button */
+.hero__cta--portfolio {
+  background: white;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.hero__cta--portfolio:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* Button Icon */
+.hero__cta-icon {
+  transition: transform 0.3s ease;
+}
+
+.hero__cta:hover .hero__cta-icon {
+  transform: translateX(4px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero {
+    padding: 120px 0 80px;
   }
-  
-  .hero__content {
-    display: flex;
+
+  .hero__buttons {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    width: 100%;
+    max-width: 300px;
   }
-  
-  .hero__title {
-    font-weight: 800;
-    font-size: clamp(2.5rem, 5vw, 3.75rem);
-    color: var(--primary);
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-  }
-  
-  .hero__title span {
-    color: var(--black);
-  }
-  
-  .hero__subtitle {
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    max-width: 600px;
-    margin: 0 auto 2rem;
-    line-height: 1.6;
-    color: var(--text-color);
-  }
-  
+
   .hero__cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: var(--primary);
-    color: white;
-    border-radius: 4px;
-    font-weight: 600;
-    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 100px 0 60px;
+  }
+
+  .hero__title {
     margin-bottom: 1rem;
   }
-  
-  .hero__cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  .hero__subtitle {
+    margin-bottom: 1.5rem;
   }
-  
-  .hero__cta-icon {
-    transition: transform 0.2s;
-  }
-  
-  .hero__cta:hover .hero__cta-icon {
-    transform: translateX(2px);
-  }
-  
-  .hero__rating {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  
-  .hero__stars {
-    color: #fbc02d;
-    font-size: 1.125rem;
-    letter-spacing: 2px;
-  }
-  
-  .hero__rating-text {
-    font-size: 1.125rem;
-    color: var(--text-color);
-    margin-top: 14px;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .hero {
-      padding-top: 100px;
-    }
-    
-    .hero__title {
-      margin-bottom: 1rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .hero {
-      padding-top: 80px;
-      padding-bottom: 60px;
-    }
-    
-    .hero__subtitle {
-      margin-bottom: 1.5rem;
-    }
-  }
+}

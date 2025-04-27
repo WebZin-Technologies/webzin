@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './NavbarSection.css'
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Logo from '../../Assets/Logo.png'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const navigation = [
   { name: 'Home', location: '/' },
+  { name: 'Portfolio', location: '/portfolio' },
   { name: 'About', location: '/about' },
   { name: 'Contact', location: '/contact' },
-  { name: 'Blog', location: '/blog' },
 ]
 
 function classNames(...classes) {
@@ -17,32 +17,38 @@ function classNames(...classes) {
 }
 
 function NavbarSection() {
-  const [activeItem, setActiveItem] = useState('/')
   const navigate = useNavigate()
+  const location = useLocation()
+  const [activeItem, setActiveItem] = useState(location.pathname)
 
-  const handleNavigation = (location) => {
-    setActiveItem(location)
-    navigate(location)
+  // This will run whenever the URL changes
+  useEffect(() => {
+    setActiveItem(location.pathname)
+  }, [location.pathname])
+
+  const handleNavigation = (path) => {
+    navigate(path)
   }
 
   return (
-    <Disclosure as="nav" className="bg-webzin z-20">
+    <Disclosure as="nav" className="navbar-container">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 z-20">
+          <div className="navbar-content">
             <div className="relative flex h-16 items-center justify-between">
               {/* Logo */}
               <div className="flex items-center">
                 <img
                   alt="WebZin"
                   src={Logo}
-                  className="h-13 w-auto"
+                  className="h-12 w-auto cursor-pointer"
+                  onClick={() => handleNavigation('/')}
                 />
               </div>
 
               {/* Desktop Navigation */}
-              <div className="hidden sm:flex sm:items-center">
-                <div className="flex space-x-8 nav-link">
+              <div className="hidden sm:flex sm:items-center sm:justify-center flex-1">
+                <div className="flex space-x-8">
                   {navigation.map((item) => (
                     <button
                       key={item.name}
@@ -51,8 +57,7 @@ function NavbarSection() {
                         activeItem === item.location
                           ? 'bg-white/10 text-white'
                           : 'text-white hover:bg-white/10',
-                        'px-4 py-2 text-xl font-bold relative group',
-                        'focus:outline-none focus:ring-0 border-none'
+                        'px-4 py-2 text-lg font-medium rounded-md transition-all duration-300 focus:outline-none focus:ring-0 border-none'
                       )}
                     >
                       {item.name}
@@ -61,14 +66,21 @@ function NavbarSection() {
                 </div>
               </div>
 
+              {/* Get in Touch Button */}
+              <div className="hidden sm:flex sm:items-center">
+                <button className="nav__cta focus:outline-none focus:ring-0 border-none" onClick={() => navigate('/contact')}>
+                  Get In Touch
+                </button>
+              </div>
+
               {/* Mobile Menu Button */}
               <div className="flex items-center sm:hidden">
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-white focus:outline-none focus:ring-0 border-none">
+                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white/10 focus:outline-none focus:ring-0 border-none">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
-                    <XMarkIcon className="block h-8 w-8" aria-hidden="true" />
+                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
-                    <Bars3Icon className="block h-8 w-8" aria-hidden="true" />
+                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
               </div>
@@ -76,27 +88,29 @@ function NavbarSection() {
           </div>
 
           {/* Mobile Navigation */}
-          <Disclosure.Panel className="sm:hidden">
+          <Disclosure.Panel className="mobile-nav">
             {({ close }) => (
-              <div className="px-4 pt-2 pb-3 space-y-1 nav-link">
+              <div className="mobile-nav-content">
                 {navigation.map((item) => (
                   <button
                     key={item.name}
                     onClick={() => {
                       handleNavigation(item.location)
-                      close() // close the mobile menu
+                      close()
                     }}
                     className={classNames(
                       activeItem === item.location
                         ? 'bg-white/10 text-white'
                         : 'text-white hover:bg-white/10',
-                      'block px-3 py-2 rounded-md text-lg font-bold relative',
-                      'focus:outline-none focus:ring-0 border-none'
+                      'block w-full text-left px-3 py-2 rounded-md text-base font-medium focus:outline-none focus:ring-0 border-none'
                     )}
                   >
                     {item.name}
                   </button>
                 ))}
+                <button className="nav__cta focus:outline-none focus:ring-0 border-none" onClick={() => navigate('/contact')}>
+                  Get In Touch
+                </button>
               </div>
             )}
           </Disclosure.Panel>

@@ -1,44 +1,81 @@
 import React from 'react';
-import { FaGlobe, FaCode, FaShoppingCart, FaPalette, FaTools, FaPencilRuler, FaAngleRight } from 'react-icons/fa';
-import './ServicesCards.css'
-import { useNavigate } from 'react-router-dom';
-function ServicesCards() {
+import { FiGlobe, FiCode, FiShoppingCart, FiPenTool, FiTool, FiAward } from 'react-icons/fi';
+import { motion } from 'framer-motion';
+import './ServicesCards.css';
 
-  const navigate = useNavigate()
+const ServicesCards = () => {
   const services = [
-    { id: 1, name: "Static Website", icon: <FaGlobe /> },
-    { id: 2, name: "Dynamic Website", icon: <FaCode /> },
-    { id: 3, name: "E-Commerce Website", icon: <FaShoppingCart /> },
-    { id: 4, name: "Web UI Design", icon: <FaPalette /> },
-    { id: 5, name: "Web Maintenance & Support", icon: <FaTools /> },
-    { id: 6, name: "Logo Design", icon: <FaPencilRuler /> }
+    {
+      icon: <FiGlobe className="service-card__icon" />,
+      title: "Static Website",
+      description: "Fast, secure, and reliable static websites perfect for small businesses and portfolios."
+    },
+    {
+      icon: <FiCode className="service-card__icon" />,
+      title: "Dynamic Website",
+      description: "Interactive and data-driven websites with powerful backend functionality."
+    },
+    {
+      icon: <FiShoppingCart className="service-card__icon" />,
+      title: "E-Commerce Website",
+      description: "Full-featured online stores with secure payment processing and inventory management."
+    },
+    {
+      icon: <FiPenTool className="service-card__icon" />,
+      title: "UI/UX Design",
+      description: "Beautiful and intuitive user interfaces that enhance user experience."
+    },
+    {
+      icon: <FiTool className="service-card__icon" />,
+      title: "Web Maintenance & Support",
+      description: "Ongoing support and maintenance to keep your website running smoothly."
+    },
+    {
+      icon: <FiAward className="service-card__icon" />,
+      title: "Logo Design",
+      description: "Professional and memorable logo designs that represent your brand."
+    }
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 mt-16 sm:mt-24 services-cards">
-      <div className="text-center mb-12 relative">
-      <h1 className="text-3xl font-bold text-[#4328c7] section-title inline-block relative">
-  Our Services
-</h1>
+    <section className="services">
+      <div className="services__container">
+        <motion.h2 
+          className="services__title"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Our Services
+        </motion.h2>
+        <motion.div 
+          className="services__grid"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+        >
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              className="service-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            >
+              <div className="service-card__content">
+                <div className="service-card__icon-wrapper">
+                  {service.icon}
+                </div>
+                <h3 className="service-card__title">{service.title}</h3>
+                <p className="service-card__description">{service.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-        {services.map((service) => (
-          <div
-            key={service.id}
-            className="bg-gray-100 rounded-xl p-4  shadow-md text-center hover:scale-105 transition-transform duration-300"
-          >
-            <div className="text-5xl mx-auto w-fit  text-[#4328c7] mb-3">{service.icon}</div>
-            <h2 className="text-lg font-semibold">{service.name}</h2>
-          </div>
-        ))}
-      </div>
-      <div className="btn-purple-container">
-      <button onClick={() => navigate('/blog')} className="btn-purple focus:outline-none focus:ring-0 border-none">Explore More <FaAngleRight/></button>
-      </div>
-    
-    </div>
+    </section>
   );
-}
+};
 
 export default ServicesCards;

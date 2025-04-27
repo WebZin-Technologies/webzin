@@ -1,74 +1,84 @@
 import React, { useState } from 'react';
 import './Faq.css';
+import { FiPlus, FiMinus } from 'react-icons/fi';
+import { motion } from 'framer-motion';
+
+const faqData = [
+  {
+    question: 'What services does WebZin offer?',
+    answer: 'WebZin offers a wide range of web solutions including static and dynamic websites, e-commerce platforms, UI/UX design, web maintenance, and logo design.',
+  },
+  {
+    question: 'How long does it take to build a website?',
+    answer: 'The timeline depends on the complexity and requirements of your project. Simple sites can be delivered in a week, while larger projects may take several weeks.',
+  },
+  {
+    question: "Can I update my website content after it's live?",
+    answer: 'Absolutely! We provide content management solutions and ongoing support so you can update your website anytime.',
+  },
+  {
+    question: 'Do you offer custom designs or use templates?',
+    answer: 'We specialize in custom designs tailored to your brand, but can also work with templates if you prefer.',
+  },
+  {
+    question: 'How can I get started with WebZin?',
+    answer: "Simply contact us through our website or the Get a Quote button, and we'll guide you through the process.",
+  },
+];
 
 function Faq() {
-  const [activeId, setActiveId] = useState(null);
+  const [openIndex, setOpenIndex] = useState(null);
 
-  const faqs = [
-    {
-      id: '1',
-      question: "What services does WebZin offer?",
-      answer: "WebZin provides E-Commerce Websites, Dynamic and Static Websites, Logo Creation, Web Maintenance & Support, and Web UI Design tailored to your business needs."
-    },
-    {
-      id: '2',
-      question: "How long does it take to build a website?",
-      answer: "The timeline depends on the type and complexity of the website, but typically ranges from 5 to 15 days for most projects."
-    },
-    {
-      id: '3',
-      question: "Can I update my website content after it's live?",
-      answer: "Yes, if it's a dynamic website, you'll be able to update your content easily. We also offer ongoing support for content changes."
-    },
-    {
-      id: '4',
-      question: "Do you offer custom designs or use templates?",
-      answer: "We offer fully custom-designed websites tailored to your brand, but we can also work with templates if you prefer a quicker solution."
-    },
-    {
-      id: '5',
-      question: "How can I get started with WebZin?",
-      answer: "Just contact us with your requirements, and we'll schedule a call to understand your vision. From there, we'll handle the design, development, and delivery!"
-    }
-  ];
-
-  const toggleFaq = (id) => {
-    setActiveId(activeId === id ? null : id);
+  const toggleFaq = (idx) => {
+    setOpenIndex(openIndex === idx ? null : idx);
   };
 
   return (
-    <div className="faq-section">
-        <div className="text-center mb-12 relative">
-      <h1 className="text-3xl font-bold text-[#4328c7] section-title inline-block relative">
- Frequently Asked Question <br /> (FAQ)
-</h1>
-</div>
+    <motion.section
+      className="faq-section"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+    >
+      {/* FAQ Title */}
+      <motion.h2
+        className="faq-title"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        Frequently Asked Questions<br />(FAQ)
+      </motion.h2>
 
-
-      <div className="faq-items">
-        {faqs.map((faq) => (
-          <div 
-            key={faq.id} 
-            className={`faq-item ${activeId === faq.id ? 'active' : ''}`}
+      {/* FAQ List */}
+      <div className="faq-list">
+        {faqData.map((item, idx) => (
+          <motion.div
+            key={idx}
+            className={`faq-item${openIndex === idx ? ' open' : ''}`}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: idx * 0.1 }}
           >
-            <div 
-              className="faq-question" 
-              onClick={() => toggleFaq(faq.id)}
-            >
-              <h3>{faq.question}</h3>
-              <span className="toggle-icon">
-                {activeId === faq.id ? '-' : '+'}
+            {/* FAQ Question */}
+            <button className="faq-question" onClick={() => toggleFaq(idx)}>
+              <span>{item.question}</span>
+              <span className="faq-icon">
+                {openIndex === idx ? <FiMinus /> : <FiPlus />}
               </span>
+            </button>
+
+            {/* FAQ Answer */}
+            <div
+              className="faq-answer-wrapper"
+              style={{ maxHeight: openIndex === idx ? '300px' : '0px' }}
+            >
+              <div className="faq-answer">{item.answer}</div>
             </div>
-            {activeId === faq.id && (
-              <div className="faq-answer">
-                <p>{faq.answer}</p>
-              </div>
-            )}
-          </div>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.section>
   );
 }
 

@@ -21,6 +21,7 @@
 html , body{
   background: var(--white);
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 .btn-purple {
@@ -48,4 +49,40 @@ html , body{
   display: inline-block;
   position: relative;
   
+}
+
+/* Global responsive styles */
+@media (max-width: 1024px) {
+  .section-title {
+    font-size: 2.25rem;
+    margin: 1.75rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+    margin: 1.5rem 0;
+  }
+  
+  .btn-purple {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.75rem;
+    margin: 1.25rem 0;
+  }
+  
+  .btn-purple {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+  
+  html, body {
+    font-size: 14px;
+  }
 }
