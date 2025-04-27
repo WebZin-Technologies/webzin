@@ -11,7 +11,7 @@
   }
   
   .about-page {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Outfit', sans-serif;
     color: var(--secondary);
     line-height: 1.6;
     width: 100%;
@@ -516,3 +516,10 @@
       font-size: 36px;
     }
   }
+
+.about-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    font-family: 'Outfit', sans-serif;
+}

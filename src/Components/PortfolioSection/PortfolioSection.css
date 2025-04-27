@@ -13,11 +13,11 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px 80px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Outfit', sans-serif;
     will-change: transform;
   }
   
-  /* Header Section */
+
   .portfolio-header {
     text-align: center;
     padding: 80px 0 40px;

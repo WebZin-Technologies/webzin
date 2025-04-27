@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import './portfoliosection.css';
+import './PortfolioSection.css';
 
 const PortfolioSection = () => {
   const [activeFilter, setActiveFilter] = useState('all');
