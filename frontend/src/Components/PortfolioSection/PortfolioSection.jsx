@@ -1,28 +1,31 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import './PortfolioSection.css';
+import Project1 from '../../Assets/project1.png';
+import Project2 from '../../Assets/project2.png';
 
 const PortfolioSection = () => {
   const [activeFilter, setActiveFilter] = useState('all');
 
+   //need to change the category
   const projects = [
     {
       id: 1,
-      title: "Luxe Fashion Store",
-      image: "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
-      description: "A premium e-commerce platform for luxury fashion with seamless checkout and product customization.",
-      category: "ecommerce",
-      tags: ["E-commerce", "React", "Payment Gateway"],
-      liveLink: "https://luxefashionstore.com"
+      title: "John Duo Portfolio",
+      image: Project1,
+      description: "Interactive portfolio with smooth animations, theme switcher, and modern design",
+      category: "Portfolio",
+      tags: ["Portfolio", "Tailwind", "Theme Switcher"],
+      liveLink: "https://webzin-technologies.github.io/johnduo/"
     },
     {
       id: 2,
-      title: "Nexus Corporate",
-      image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
-      description: "A clean, professional corporate website with interactive elements and smooth animations.",
-      category: "static",
-      tags: ["Static Site", "HTML/CSS", "JavaScript"],
-      liveLink: "https://nexuscorporate.com"
+      title: "ELITE SHOTS",
+      image: Project2,
+      description: "Stunning photographer portfolio with captivating visuals, smooth transitions, and gallery.",
+      category: "Portfolio",
+      tags: ["Photographer", "HTML/CSS", "JavaScript"],
+      liveLink: "https://webzin-technologies.github.io/eliteshots/"
     },
     {
       id: 3,

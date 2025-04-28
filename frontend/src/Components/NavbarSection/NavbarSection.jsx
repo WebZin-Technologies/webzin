@@ -20,14 +20,27 @@ function NavbarSection() {
   const navigate = useNavigate()
   const location = useLocation()
   const [activeItem, setActiveItem] = useState(location.pathname)
+  const [isAdmin, setIsAdmin] = useState(false)
 
   // This will run whenever the URL changes
   useEffect(() => {
     setActiveItem(location.pathname)
   }, [location.pathname])
 
+  // Check if user is logged in as admin
+  useEffect(() => {
+    const adminToken = localStorage.getItem('adminToken')
+    setIsAdmin(!!adminToken)
+  }, [])
+
   const handleNavigation = (path) => {
     navigate(path)
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem('adminToken')
+    setIsAdmin(false)
+    navigate('/')
   }
 
   return (
@@ -66,11 +79,28 @@ function NavbarSection() {
                 </div>
               </div>
 
-              {/* Get in Touch Button */}
-              <div className="hidden sm:flex sm:items-center">
-                <button className="nav__cta focus:outline-none focus:ring-0 border-none" onClick={() => navigate('/contact')}>
-                  Get In Touch
-                </button>
+              {/* Admin Link and Get in Touch Button */}
+              <div className="hidden sm:flex sm:items-center space-x-4">
+                {isAdmin ? (
+                  <>
+                    <button 
+                      className="text-white hover:bg-white/10 px-4 py-2 text-lg font-medium rounded-md transition-all duration-300 focus:outline-none focus:ring-0 border-none"
+                      onClick={() => handleNavigation('/admin/dashboard')}
+                    >
+                      Admin
+                    </button>
+                    <button 
+                      className="text-white hover:bg-white/10 px-4 py-2 text-lg font-medium rounded-md transition-all duration-300 focus:outline-none focus:ring-0 border-none"
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <button className="nav__cta focus:outline-none focus:ring-0 border-none" onClick={() => navigate('/contact')}>
+                    Get In Touch
+                  </button>
+                )}
               </div>
 
               {/* Mobile Menu Button */}
@@ -102,15 +132,45 @@ function NavbarSection() {
                       activeItem === item.location
                         ? 'bg-white/10 text-white'
                         : 'text-white hover:bg-white/10',
-                      'block w-full text-left px-3 py-2 rounded-md text-base font-medium focus:outline-none focus:ring-0 border-none'
+                      'block w-full text-left px-4 py-2 text-lg font-medium rounded-md transition-all duration-300 focus:outline-none focus:ring-0 border-none'
                     )}
                   >
                     {item.name}
                   </button>
                 ))}
-                <button className="nav__cta focus:outline-none focus:ring-0 border-none" onClick={() => navigate('/contact')}>
-                  Get In Touch
-                </button>
+                
+                {isAdmin ? (
+                  <>
+                    <button
+                      onClick={() => {
+                        handleNavigation('/admin/dashboard')
+                        close()
+                      }}
+                      className="block w-full text-left px-4 py-2 text-lg font-medium text-white hover:bg-white/10 rounded-md transition-all duration-300 focus:outline-none focus:ring-0 border-none"
+                    >
+                      Admin Dashboard
+                    </button>
+                    <button
+                      onClick={() => {
+                        handleLogout()
+                        close()
+                      }}
+                      className="block w-full text-left px-4 py-2 text-lg font-medium text-white hover:bg-white/10 rounded-md transition-all duration-300 focus:outline-none focus:ring-0 border-none"
+                    >
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    onClick={() => {
+                      handleNavigation('/contact')
+                      close()
+                    }}
+                    className="block w-full text-left px-4 py-2 text-lg font-medium text-white hover:bg-white/10 rounded-md transition-all duration-300 focus:outline-none focus:ring-0 border-none"
+                  >
+                    Get In Touch
+                  </button>
+                )}
               </div>
             )}
           </Disclosure.Panel>
