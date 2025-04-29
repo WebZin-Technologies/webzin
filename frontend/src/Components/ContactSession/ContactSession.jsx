@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion'; // Import framer-motion
 import './ContactSession.css';
 import { FaInstagram, FaLinkedin, FaPaperPlane, FaPhone, FaUser, FaWhatsapp } from 'react-icons/fa';
@@ -46,6 +46,49 @@ function ContactSession() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  const [loading, setLoading] = useState(false);
+
+  const [submitted, setSubmitted] = useState(false);
+  
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    const formUrl = "https://formsubmit.co/ajax/webzin.dev@gmail.com"; // Use AJAX endpoint
+  
+    try {
+      setLoading(true);
+      const res = await fetch(formUrl, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      setLoading(false);
+  
+      if (res.ok) {
+        setSubmitted(true);  // show popup
+        setFormData({ name: '', email: '', phone: '', message: '' });  // clear form
+        setTimeout(() => setSubmitted(false), 4000);  // hide popup after 4s
+      } else {
+        alert("Failed to send message. Try again.");
+      }
+    } catch (err) {
+      alert("Error! Check your network or try again.");
+    }
+  };
+  
   return (
     <motion.div 
       className="contact-session" 
@@ -65,33 +108,79 @@ function ContactSession() {
             </motion.p>
           </div>
 
-          <motion.form className="contact-form" variants={fadeUp}>
-            <motion.div className="input-group" variants={fadeUp}>
+          <motion.form className="contact-form" variants={fadeUp} onSubmit={handleSubmit}>
+          <motion.div className="input-group" variants={fadeUp}>
               <span className="input-icon"><FaUser /></span>
-              <input type="text" placeholder="Your Name" className="form-input" />
+              <input
+  type="text"
+  placeholder="Your Name"
+  className="form-input"
+  name="name"
+  value={formData.name}
+  onChange={handleChange}
+  required
+/>
             </motion.div>
 
             <motion.div className="input-group" variants={fadeUp}>
               <span className="input-icon"><SiGmail /></span>
-              <input type="email" placeholder="Email Address" className="form-input" />
+              <input
+  type="email"
+  placeholder="Email Address"
+  className="form-input"
+  name="email"
+  value={formData.email}
+  onChange={handleChange}
+  required
+/>
+
             </motion.div>
 
             <motion.div className="input-group" variants={fadeUp}>
               <span className="input-icon"><FaPhone /></span>
-              <input type="text" placeholder="Phone Number" className="form-input" />
+              <input
+  type="text"
+  placeholder="Phone Number"
+  className="form-input"
+  name="phone"
+  value={formData.phone}
+  onChange={handleChange}
+/>
             </motion.div>
 
             <motion.div className="input-group textarea-group" variants={fadeUp}>
               <span className="input-icon"><FaPaperPlane /></span>
-              <textarea placeholder="Tell us about your project" className="form-textarea"></textarea>
-            </motion.div>
+              <textarea
+  placeholder="Tell us about your project"
+  className="form-textarea"
+  name="message"
+  value={formData.message}
+  onChange={handleChange}
+  required
+></textarea>
 
-            <motion.button className="submit-button" variants={fadeUp}>
-              Send Message
-              <FaPaperPlane className="button-icon" />
-            </motion.button>
+            </motion.div>
+            <input type="hidden" name="_captcha" value="false" />
+<input type="hidden" name="_next" value="https://yourwebsite.com/" />
+
+<motion.button
+  className="submit-button"
+  variants={fadeUp}
+  disabled={loading}
+>
+  {loading ? 'Sending...' : 'Send Message'}
+  <FaPaperPlane className="button-icon" />
+</motion.button>
+
           </motion.form>
         </motion.div>
+
+        {submitted && (
+  <div className="popup-message">
+    Thank you! Your message has been successfully sent. We'll get back to you shortly
+  </div>
+)}
+
 
         {/* Right Side - Contact Info */}
         <motion.div className="contact-info-container" variants={fadeUp}>
