@@ -1,0 +1,392 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+
+
+.navbar-content {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 72px; /* Slightly reduced height */
+}
+
+.navbar-content .flex {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-section {
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+
+.logo-section img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-links {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin: 0 2rem;
+}
+
+.nav-link {
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:focus,
+.nav-link:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Remove focus styles from buttons */
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.nav-link button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.125rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+}
+
+.nav-link button:hover {
+  opacity: 0.8;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link button.active {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav__cta {
+  flex: 0 0 auto;
+  background: #ffffff;
+  color: #4728c7;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.125rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.mobile-menu-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+.mobile-nav {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background-color: #4728c7;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mobile-nav-content button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.125rem;
+  font-weight: 500;
+  padding: 0.75rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.3s ease;
+  width: 100%;
+  border-radius: 6px;
+}
+
+.mobile-nav-content button:hover {
+  opacity: 0.8;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-content button.active {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-get-in-touch {
+  background: #ffffff !important;
+  color: #4728c7 !important;
+  border-radius: 8px;
+  text-align: center !important;
+  font-weight: 600 !important;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav__cta {
+    display: none;
+  }
+
+  .mobile-menu-button {
+    display: block;
+  }
+
+  .navbar-content {
+    padding: 0 1.5rem;
+  }
+}
+
+/* Focus states for accessibility */
+button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Animation for mobile menu */
+.mobile-nav {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive styles for navbar */
+@media (max-width: 1024px) {
+  .nav-link button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .logo-section img {
+    height: 3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-link button {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .logo-section img {
+    height: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-link button {
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+  }
+  
+  .logo-section img {
+    height: 2.25rem;
+  }
+
+  .navbar-content {
+    padding: 0 1rem;
+  }
+}
+
+/* Desktop Navigation Links */
+/* Desktop Navigation Links */
+.navbar-content .flex button {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* Mobile Navigation Links */
+.mobile-nav-content button {
+  font-weight: 700;
+  font-size: 19px;
+}
+
+/* Navigation Links */
+.nav-link-custom {
+  transition: background-color 0.3s ease !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.nav-link-custom:hover {
+  background-color: rgba(255,255,255,0.05) !important;
+}
+
+.nav-link-custom:focus,
+.nav-link-custom:active {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Override Bootstrap's default focus styles */
+.nav-link:focus,
+.nav-link:active {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Button Styles */
+.btn-custom {
+  transition: transform 0.3s ease !important;
+}
+
+.btn-custom:focus,
+.btn-custom:active {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.btn-custom:hover {
+  transform: translateY(-2px);
+}
+
+/* Hamburger Menu Button */
+.hamburger-menu {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 24px;
+  position: relative;
+  z-index: 100;
+  border: none;
+  outline: none;
+}
+
+.hamburger-menu span {
+    border: none;
+    outline: none;
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 3px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.hamburger-menu span:nth-child(1) {
+  top: 0px;
+}
+
+.hamburger-menu span:nth-child(2) {
+  top: 10px;
+}
+
+.hamburger-menu span:nth-child(3) {
+  top: 20px;
+}
+
+/* Animated Cross State */
+.hamburger-menu.open span:nth-child(1) {
+  top: 10px;
+  transform: rotate(135deg);
+}
+
+.hamburger-menu.open span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.hamburger-menu.open span:nth-child(3) {
+  top: 10px;
+  transform: rotate(-135deg);
+}
+
+/* Mobile Styles */
+@media (max-width: 991px) {
+  .hamburger-menu {
+    display: block;
+  }
+  
+  /* Hide default Bootstrap toggle */
+  .navbar-toggler {
+    display: none !important;
+  }
+
+  .navbar-collapse {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background-color: #4728c7;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-collapse.collapsing,
+  .navbar-collapse.show {
+    animation: slideDown 0.3s ease-out;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

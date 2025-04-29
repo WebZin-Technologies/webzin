@@ -13,16 +13,14 @@ function App() {
     <div className="App">
       <ScrollToTop />
       <NavbarSection/>
-      <div style={{ paddingTop: '80px' }}>
       <Routes>
         <Route path='/' element={<Home/>}/>
+        <Route path='/home' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/portfolio' element={<Portfolio/>}/>
-       
       </Routes>
       <FooterSection/>
-      </div>
     </div>
   )
 }
