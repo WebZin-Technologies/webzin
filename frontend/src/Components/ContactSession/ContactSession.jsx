@@ -177,7 +177,7 @@ function ContactSession() {
 
         {submitted && (
   <div className="popup-message">
-    Thank you! Your message has been successfully sent. We'll get back to you shortly
+    Thank you! Your message has been successfully sent. We'll get back to you shortly.
   </div>
 )}
 
