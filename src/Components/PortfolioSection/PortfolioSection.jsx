@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import './PortfolioSection.css';
-import Project1 from '../../Assets/project1.png';
-import Project2 from '../../Assets/project2.png';
+
 
 const PortfolioSection = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -12,7 +11,7 @@ const PortfolioSection = () => {
     {
       id: 1,
       title: "John Duo Portfolio",
-      image: Project1,
+      image: '/project1.png',
       description: "Interactive portfolio with smooth animations, theme switcher, and modern design",
       category: "Portfolio",
       tags: ["Portfolio", "Tailwind", "Theme Switcher"],
@@ -21,7 +20,7 @@ const PortfolioSection = () => {
     {
       id: 2,
       title: "ELITE SHOTS",
-      image: Project2,
+      image: '/project2.png',
       description: "Stunning photographer portfolio with captivating visuals, smooth transitions, and gallery.",
       category: "Portfolio",
       tags: ["Photographer", "HTML/CSS", "JavaScript"],
@@ -29,12 +28,12 @@ const PortfolioSection = () => {
     },
     {
       id: 3,
-      title: "Brew Haven Logo",
-      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80",
-      description: "Modern logo design for a specialty coffee shop with warm tones and custom typography.",
-      category: "logo",
-      tags: ["Logo Design", "Branding", "Illustrator"],
-      liveLink: "https://brewhaven.com"
+      title: "NexusTech",
+      image: "/project3.png",
+      description: "Sleek tech store with premium gadgets, smooth UI, and smart shopping.",
+      category: "Ecommerce",
+      tags: ["Ecommerce", "Tech Gadgets", "Custom Carousel"],
+      liveLink: "https://webzin-technologies.github.io/nexustech/"
     },
     {
       id: 4,
